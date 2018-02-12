@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :questions
   root to: 'home#show'
+
+  resources :questions do
+    resources :answers, only: %w(create update destroy)
+  end
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

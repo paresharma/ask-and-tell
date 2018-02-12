@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.build(question_params)
 
     if @question.save
       redirect_to @question, notice: 'Question was successfully created.'
@@ -46,13 +46,14 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def question_params
-      params.require(:question).permit(:title, :description, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def question_params
+    params.require(:question).permit(:title, :description, :user_id)
+  end
 end
