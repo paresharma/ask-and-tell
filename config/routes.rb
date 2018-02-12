@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   root to: 'home#show'
 
   get 'auth/:provider/callback', to: 'sessions#create'
