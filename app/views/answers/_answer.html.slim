@@ -1,6 +1,6 @@
 p
   strong Description:
-  = answer.description
+  = markup(answer.description).html_safe
 p
   strong User:
   = answer.user.name

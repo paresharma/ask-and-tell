@@ -5,7 +5,7 @@ p
   = @question.title
 p
   strong Description:
-  = @question.description
+  = markup(@question.description).html_safe
 p
   strong User:
   = @question.user.name
