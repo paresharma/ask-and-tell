@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.search(params[:q])
+    @questions = set_page_and_extract_portion_from Question.search(params[:q])
   end
 
   # GET /questions/1
