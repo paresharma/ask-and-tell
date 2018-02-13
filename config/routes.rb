@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#show'
+  root to: 'questions#index'
 
   resources :questions do
     resources :answers, only: %w(create update destroy)
@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
 end
