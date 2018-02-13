@@ -1,25 +1,15 @@
-h1 Listing questions
+h1 Questions
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th User
-      th
-      th
-      th
+= form_tag questions_path, method: :get
+  p
+    = text_field_tag :q, params[:q]
+    = submit_tag 'Search', name: nil
 
-  tbody
-    - @questions.each do |question|
-      tr
-        td = question.title
-        td = question.description
-        td = question.user.name
-        td = link_to 'Show', question
-        td = link_to 'Edit', edit_question_path(question)
-        td = link_to 'Destroy', question, data: { confirm: 'Are you sure?' }, method: :delete
+  br
+  strong
+    = link_to 'New Question', new_question_path
+  br
+  br
 
-br
-
-= link_to 'New Question', new_question_path
+  div
+    = render @questions

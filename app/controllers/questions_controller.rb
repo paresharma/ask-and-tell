@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    @questions = Question.search(params[:q])
   end
 
   # GET /questions/1
@@ -54,6 +54,6 @@ class QuestionsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def question_params
-    params.require(:question).permit(:title, :description, :user_id)
+    params.require(:question).permit(:title, :description)
   end
 end
