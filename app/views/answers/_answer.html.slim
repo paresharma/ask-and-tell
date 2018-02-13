@@ -5,4 +5,6 @@ p
 
 => link_to 'Edit', edit_question_answer_path(answer.question, answer)
 '|
-=<> link_to 'Destroy', [:question, answer], data: { confirm: 'Are you sure?' }, method: :delete
+=<> link_to 'Destroy', [answer.question, answer], data: { confirm: 'Are you sure?' }, method: :delete
+
+br

@@ -2,7 +2,7 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers
 
-  default_scope -> { includes(:user) }
+  default_scope -> { includes(:user).order('id DESC') }
 
   include PgSearch
   pg_search_scope :search_by_title_or_description,

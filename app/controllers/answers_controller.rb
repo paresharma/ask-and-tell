@@ -2,6 +2,13 @@ class AnswersController < ApplicationController
   before_action :login_required
   before_action :set_answer, only: [:edit, :update, :destroy]
 
+  def index
+    set_page_and_extract_portion_from(
+      Question.find(params[:question_id]).answers,
+      per_page: [5, 10, 15]
+    )
+  end
+
   def edit
   end
 

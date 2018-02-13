@@ -11,15 +11,6 @@ h1 Questions
   br
   br
 
-  div
-    p
-      | Showing page
-      =< "#{@page.number} of #{@page.recordset.page_count}"
-      =< "(#{@page.recordset.records_count} total questions):"
-
-    = render @page.records
-
-    - if @page.last?
-      | No more pages!
-    - else
-      = link_to 'Next page', questions_path(page: @page.next_number, q: params[:q])
+  = render 'shared/paginated_records',
+    next_page_path: questions_path(page: @page.next_number, q: params[:q]),
+    options: {}
