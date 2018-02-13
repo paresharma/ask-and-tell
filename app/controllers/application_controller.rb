@@ -9,5 +9,16 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
+    return if current_user
+    set_return_path(request.url) if request.get?
+    redirect_to new_session_path, notice: 'Login to continue'
+  end
+
+  def return_path
+    session[:return_path] || root_path
+  end
+
+  def set_return_path(path)
+    session[:return_path] = path
   end
 end

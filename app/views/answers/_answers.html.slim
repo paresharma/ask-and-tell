@@ -1,4 +1,5 @@
 h4 Answers
 = render question.answers
 
-= render 'answers/form', question: question, answer: question.answers.build
+- if current_user
+  = render 'answers/form', question: question, answer: question.answers.build

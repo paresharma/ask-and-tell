@@ -1,6 +1,6 @@
 div
   h2 = link_to question.title, question
-  p = question.description
+  p = markup(question.description).html_safe
   p
     small by
     =<> question.user.name
