@@ -1,6 +1,9 @@
 class AnswersController < ApplicationController
   before_action :login_required
-  before_action :set_answer, only: [:update, :destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy]
+
+  def edit
+  end
 
   def create
     @answer = Answer.new(answer_params)
@@ -16,7 +19,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to @answer, notice: 'Answer was successfully updated.'
+      redirect_to @answer.question, notice: 'Answer was successfully updated.'
     else
       render :edit
     end

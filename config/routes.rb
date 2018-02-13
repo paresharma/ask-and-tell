@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'questions#index'
 
   resources :questions do
-    resources :answers, only: %w(create update destroy)
+    resources :answers, only: %w(edit create update destroy)
   end
 
   get 'auth/:provider/callback', to: 'sessions#create'

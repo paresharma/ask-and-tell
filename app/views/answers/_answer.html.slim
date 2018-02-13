@@ -1,6 +1,8 @@
+p = markup(answer.description).html_safe
 p
-  strong Description:
-  = markup(answer.description).html_safe
-p
-  strong User:
-  = answer.user.name
+  small by
+  =<> answer.user.name
+
+=> link_to 'Edit', edit_question_answer_path(answer.question, answer)
+'|
+=<> link_to 'Destroy', [:question, answer], data: { confirm: 'Are you sure?' }, method: :delete
