@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   include PgSearch
 
   belongs_to :user
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   default_scope -> { includes(:user).order('id DESC') }
 
