@@ -1,5 +1,7 @@
 {
   "name": "ask-and-tell",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "dialog-polyfill": "^0.4.9"
+  }
 }

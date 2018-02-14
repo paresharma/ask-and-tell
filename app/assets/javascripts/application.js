@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require dialog-polyfill
 //= require material
 //= require_tree .
 
