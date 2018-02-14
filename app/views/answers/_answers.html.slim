@@ -1,5 +1,6 @@
 - if current_user
-  = render 'answers/form', answer: question.answers.build
+  div#answer_form
+    = render 'answers/form', answer: question.answers.build
 
 h4 Answers
 div#answers

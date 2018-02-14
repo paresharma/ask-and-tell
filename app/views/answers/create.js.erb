@@ -1,0 +1,11 @@
+<% if @_ok %>
+
+  document.getElementById("answers").insertAdjacentHTML('afterbegin', "<%= escape_javascript(render(@answer)) %>")
+
+  document.getElementById("answer_form").innerHTML = "<%= escape_javascript(render('answers/form', answer: @answer.question.answers.build)) %>"
+
+<% else %>
+
+    document.getElementById("answer_form").innerHTML = "<%= escape_javascript(render('answers/form', answer: @answer)) %>"
+
+<% end %>

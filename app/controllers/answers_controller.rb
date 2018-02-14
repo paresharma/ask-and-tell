@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :login_required
+  before_action :login_required, except: [:index]
   before_action :set_answer, only: [:edit, :update, :destroy]
 
   def index
@@ -17,11 +17,7 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer.question_id = params[:question_id]
 
-    if @answer.save
-      redirect_to @answer.question, notice: 'Answer was successfully created.'
-    else
-      render :new
-    end
+    @_ok =  @answer.save
   end
 
   def update

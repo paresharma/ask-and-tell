@@ -4,11 +4,14 @@
     p
       small by
       =<> answer.user.name
-  .mdl-card__actions.mdl-card--border
-    = link_to 'Edit', edit_question_answer_path(answer.question, answer),
-      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
-    = link_to 'Destroy', [answer.question, answer],
-      data: { confirm: 'Are you sure?' },
-      method: :delete,
-      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
+
+  - if answer.can_be_administered_by(current_user)
+    .mdl-card__actions.mdl-card--border
+      = link_to 'Edit', edit_question_answer_path(answer.question, answer),
+        class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
+
+      = link_to 'Destroy', [answer.question, answer],
+        data: { confirm: 'Are you sure?' },
+        method: :delete,
+        class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
 br
