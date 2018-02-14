@@ -1,10 +1,7 @@
 = form_for @question do |f|
   - if @question.errors.any?
     #error_explanation
-      = "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
-      ul
-        - @question.errors.full_messages.each do |message|
-          li = message
+      = render 'shared/error', object: @question
 
   = f.text_field :title,
     class: "mdl-textfield__input",
@@ -13,7 +10,7 @@
   = f.text_area :description,
     rows: 10,
     class: "mdl-textfield__input",
-    placeholder: :description
+    placeholder: 'Description (supports markdown)'
   br
   => f.submit 'Ask',
     class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"

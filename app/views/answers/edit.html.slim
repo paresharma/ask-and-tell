@@ -1,5 +1,6 @@
-= render @answer.question
+div#edit_answer
+  = render @answer.question
 
-== render 'form', answer: @answer
+  == render 'form', answer: @answer
 
-=> link_to 'Back to question', @answer.question
+  => link_to 'Back to question', @answer.question

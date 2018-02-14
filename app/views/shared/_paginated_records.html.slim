@@ -1,14 +1,23 @@
-div
-  p
-    | Showing page
-    =< "#{@page.number} of #{@page.recordset.page_count}"
-    =< "(#{@page.recordset.records_count} total"
-    =< "#{@page.records.class.to_s.split("::").first.downcase.pluralize}):"
+- object_name = @page.records.class.to_s.split("::").first.downcase.pluralize
 
-  = render @page.records
+- if @page.empty?
 
-  br
-  - if @page.last?
-    | No more pages!
-  - else
-    = link_to 'Next page', next_page_path, options
+  div
+    p = "0 #{object_name} found"
+
+- else
+
+  div
+    p
+      | Showing page
+      =< "#{@page.number} of #{@page.recordset.page_count}"
+      =< "(#{@page.recordset.records_count} total"
+      =< "#{object_name}):"
+
+    = render @page.records
+
+    br
+    - if @page.last?
+      | No more pages!
+    - else
+      = link_to 'Next page', next_page_path, options

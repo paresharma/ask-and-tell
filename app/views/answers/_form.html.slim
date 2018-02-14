@@ -3,16 +3,13 @@
     = form_for [answer.question, answer], remote: true do |f|
       - if answer.errors.any?
         #error_explanation
-          = "#{pluralize(answer.errors.count, "error")} prohibited this answer from being saved:"
-          ul
-            - answer.errors.full_messages.each do |message|
-              li = message
+          = render 'shared/error', object: answer
 
       .mdl-card__actions.mdl-card--border
         = f.text_area :description,
           rows: 10,
           class: "mdl-textfield__input",
-          placeholder: :description
+          placeholder: 'Description (supports markdown)'
         br
         = f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
         /=< link_to 'Cancel', root_path,
