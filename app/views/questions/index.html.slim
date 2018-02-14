@@ -1,16 +1,11 @@
-h1 Questions
+h3 Questions
 
-= form_tag questions_path, method: :get
-  p
-    = text_field_tag :q, params[:q]
-    = submit_tag 'Search', name: nil
+strong
+  = link_to 'Ask Question', new_question_path,
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+br
+br
 
-  br
-  strong
-    = link_to 'New Question', new_question_path
-  br
-  br
-
-  = render 'shared/paginated_records',
-    next_page_path: questions_path(page: @page.next_number, q: params[:q]),
-    options: {}
+= render 'shared/paginated_records',
+  next_page_path: questions_path(page: @page.next_number, q: params[:q]),
+  options: {}

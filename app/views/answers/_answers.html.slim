@@ -1,11 +1,11 @@
-h4 Answers
-div#answers
-
 - if current_user
   = render 'answers/form', answer: question.answers.build
 
+h4 Answers
+div#answers
+
 javascript:
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("turbolinks:load", function() {
     Rails.ajax({
       type: "GET",
       url: "#{question_answers_path(question)}"

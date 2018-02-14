@@ -7,13 +7,22 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    - if current_user
-      | Signed in as
-      strong =<> current_user.name
-      small
-        i
-          = link_to 'Sign out', signout_path, id: 'sign_out'
-    - else
-      = link_to 'Sign in with Google', '/auth/google_oauth2', id: 'sign_in'
-
-    = yield
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        .mdl-layout__header-row
+          = render 'shared/header', large_screen_only: true do
+            .mdl-layout-spacer
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right
+              label.mdl-button.mdl-js-button.mdl-button--icon for="fixed-header-drawer-exp"
+                i.material-icons search
+              .mdl-textfield__expandable-holder
+                = form_tag questions_path, method: :get
+                  = text_field_tag :q, params[:q],
+                    id: 'fixed-header-drawer-exp',
+                    class: 'mdl-textfield__input',
+                    placeholder: 'Search questions'
+      .mdl-layout__drawer
+        = render('shared/header', large_screen_only: false) { '' }
+      main.mdl-layout__content style="padding: 1rem"
+        .page-content
+          = yield

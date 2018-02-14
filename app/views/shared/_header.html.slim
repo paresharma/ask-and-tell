@@ -1,0 +1,18 @@
+= link_to raw('<span>AskAndTell</span>'),
+  root_path,
+  class: 'mdl-layout-title mdl-navigation__link'
+
+= yield
+
+nav class="mdl-navigation #{large_screen_only ? 'mdl-layout--large-screen-only' : ''}"
+  - if current_user
+    strong.mdl-navigation__link
+      | Hello,
+      =<> current_user.name
+    = link_to 'Sign out', signout_path,
+      id: 'sign_out',
+      class: 'mdl-navigation__link'
+  - else
+    = link_to 'Sign in with Google', '/auth/google_oauth2',
+      id: 'sign_in',
+      class: 'mdl-navigation__link'

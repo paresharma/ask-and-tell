@@ -1,10 +1,14 @@
-p = markup(answer.description).html_safe
-p
-  small by
-  =<> answer.user.name
-
-=> link_to 'Edit', edit_question_answer_path(answer.question, answer)
-'|
-=<> link_to 'Destroy', [answer.question, answer], data: { confirm: 'Are you sure?' }, method: :delete
-
+.mdl-card.mdl-shadow--2dp
+  .mdl-card__supporting-text
+    p = markup(answer.description).html_safe
+    p
+      small by
+      =<> answer.user.name
+  .mdl-card__actions.mdl-card--border
+    = link_to 'Edit', edit_question_answer_path(answer.question, answer),
+      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
+    = link_to 'Destroy', [answer.question, answer],
+      data: { confirm: 'Are you sure?' },
+      method: :delete,
+      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
 br

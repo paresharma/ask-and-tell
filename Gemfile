@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.0.rc1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'geared_pagination', '~> 0.2'
+gem 'material_design_lite-sass'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'pg_search'
 gem 'puma', '~> 3.11'

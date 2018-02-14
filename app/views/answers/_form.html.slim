@@ -1,12 +1,20 @@
-= form_for [answer.question, answer], remote: true do |f|
-  - if answer.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(answer.errors.count, "error")} prohibited this answer from being saved:"
-      ul
-        - answer.errors.full_messages.each do |message|
-          li = message
+.mdl-card.mdl-shadow--2dp
+  .mdl-card__supporting-text
+    = form_for [answer.question, answer], remote: true do |f|
+      - if answer.errors.any?
+        #error_explanation
+          = "#{pluralize(answer.errors.count, "error")} prohibited this answer from being saved:"
+          ul
+            - answer.errors.full_messages.each do |message|
+              li = message
 
-  .field
-    = f.label :answer
-    = f.text_area :description
-  .actions = f.submit
+      .mdl-card__actions.mdl-card--border
+        = f.text_area :description,
+          rows: 10,
+          class: "mdl-textfield__input",
+          placeholder: :description
+        br
+        = f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+        /=< link_to 'Cancel', root_path,
+          class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+br

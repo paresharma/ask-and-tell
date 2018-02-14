@@ -2,13 +2,4 @@ p#notice = notice
 
 = render @question
 
-=> link_to 'Edit', edit_question_path(@question)
-'|
-=<> link_to 'Destroy', @question, data: { confirm: 'Are you sure?' }, method: :delete
-'|
-=< link_to 'Back', questions_path
-
-br
-br
-div
-  = render partial: 'answers/answers', locals: { question: @question }
+= render partial: 'answers/answers', locals: { question: @question }

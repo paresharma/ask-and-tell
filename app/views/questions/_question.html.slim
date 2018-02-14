@@ -1,7 +1,16 @@
-div
-  h2 = link_to question.title, question
-  p = markup(question.description).html_safe
-  p
-    small by
-    =<> question.user.name
+.mdl-card.mdl-shadow--2dp
+  .mdl-card__title
+    h2.mdl-card__title-text = link_to question.title, question
+  .mdl-card__supporting-text
+    p = markup(question.description).html_safe
+    p
+      small by
+      =<> question.user.name
+  .mdl-card__actions.mdl-card--border
+    = link_to 'Edit', edit_question_path(question),
+      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
+    = link_to 'Destroy', question,
+      data: { confirm: 'Are you sure?' },
+      method: :delete,
+      class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'
 br
