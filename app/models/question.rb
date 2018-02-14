@@ -11,8 +11,11 @@ class Question < ApplicationRecord
     # associated_against: { author: :title, comments: [:title, :description] },
     # ignoring: :accents
 
-  validates :title, presence: true
-  validates :title, uniqueness: true
+  validates :title,
+    presence: true,
+    uniqueness: true,
+    length: { maximum: 200 }
+
   validates :description, presence: true
 
   def self.search(query)
