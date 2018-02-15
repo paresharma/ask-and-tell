@@ -29,6 +29,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'webmock'
@@ -44,4 +45,5 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'faker'
 end
