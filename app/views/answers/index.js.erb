@@ -1,1 +1,12 @@
-document.getElementById("answers").innerHTML = "<%= j render('shared/paginated_records', next_page_path: question_answers_path(params[:question_id], page: @page.next_number), options: { remote: true }) %>"
+<%
+    html = render(
+      'shared/paginated_records',
+      next_page_path: question_answers_path(
+        params[:question_id],
+        page: @page.next_number
+      ),
+      options: { remote: true }
+    )
+%>
+
+document.getElementById("answers").innerHTML = "<%= j html %>"

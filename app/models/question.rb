@@ -20,7 +20,7 @@ class Question < ApplicationRecord
 
   validates :description, presence: true
 
-  def self.search(query)
+  def self.search(query = nil)
     if query.present?
       search_by_title_or_description(query)
       # rank = <<-RANK

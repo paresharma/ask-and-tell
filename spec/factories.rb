@@ -6,4 +6,18 @@ FactoryBot.define do
     oauth_token { Faker::Number.number(10) }
     oauth_expires_at { Time.now }
   end
+
+  factory :question do
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+
+    user
+  end
+
+  factory :answer do
+    description { Faker::Lorem.paragraph }
+
+    question
+    user
+  end
 end

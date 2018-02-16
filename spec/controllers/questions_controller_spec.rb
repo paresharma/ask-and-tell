@@ -2,19 +2,17 @@ require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
 
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:user) { create(:user) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:valid_attributes) { attributes_for(:question) }
 
-  let(:valid_session) { {} }
+  let(:invalid_attributes) { { title: '', description: '' } }
+
+  let(:valid_session) { { user_id: user.id } }
 
   describe "GET #index" do
     it "returns a success response" do
-      Question.create! valid_attributes
+      create(:question, user: user)
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -22,7 +20,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      question = Question.create! valid_attributes
+      question = create(:question, user: user)
       get :show, params: {id: question.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -37,7 +35,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      question = Question.create! valid_attributes
+      question = create(:question, user: user)
       get :edit, params: {id: question.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -63,23 +61,28 @@ RSpec.describe QuestionsController, type: :controller do
         expect(response).to be_success
       end
     end
+
+    context 'invalid session' do
+      it 'redirects to sessions#new' do
+        post :create, params: { question: valid_attributes }
+        expect(response).to redirect_to('/sessions/new')
+      end
+    end
   end
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { { description: Faker::Lorem.paragraph } }
 
       it "updates the requested question" do
-        question = Question.create! valid_attributes
+        question = create(:question, user: user)
         put :update, params: {id: question.to_param, question: new_attributes}, session: valid_session
         question.reload
-        skip("Add assertions for updated state")
+        expect(question.description).to eq(new_attributes[:description])
       end
 
       it "redirects to the question" do
-        question = Question.create! valid_attributes
+        question = create(:question, user: user)
         put :update, params: {id: question.to_param, question: valid_attributes}, session: valid_session
         expect(response).to redirect_to(question)
       end
@@ -87,7 +90,7 @@ RSpec.describe QuestionsController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        question = Question.create! valid_attributes
+        question = create(:question, user: user)
         put :update, params: {id: question.to_param, question: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
@@ -96,14 +99,14 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested question" do
-      question = Question.create! valid_attributes
+      question = create(:question, user: user)
       expect {
         delete :destroy, params: {id: question.to_param}, session: valid_session
       }.to change(Question, :count).by(-1)
     end
 
     it "redirects to the questions list" do
-      question = Question.create! valid_attributes
+      question = create(:question, user: user)
       delete :destroy, params: {id: question.to_param}, session: valid_session
       expect(response).to redirect_to(questions_url)
     end
