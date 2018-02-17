@@ -6,10 +6,11 @@ h4 Answers
 div#answers
 
 javascript:
-  document.addEventListener("turbolinks:load", function() {
-    'use strict';
+  'use strict';
+  document.querySelector("#answers").addEventListener(
+    "load",
     Rails.ajax({
       type: "GET",
-      url: "#{question_answers_path(question)}"
+      url: Turbolinks.controller.location + "/answers"
     })
-  })
+  )
