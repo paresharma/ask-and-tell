@@ -14,3 +14,6 @@
 %>
 
 document.querySelector("#answers").innerHTML = "<%= j html %>"
+var search = "?page=<%= @page.number %>"
+if(search != window.location.search)
+  history.pushState({}, "", search)

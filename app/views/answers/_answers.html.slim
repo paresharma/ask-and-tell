@@ -11,6 +11,8 @@ javascript:
     "load",
     Rails.ajax({
       type: "GET",
-      url: Turbolinks.controller.location + "/answers"
+      url:  window.location.pathname +
+            "/answers" +
+            window.location.search
     })
   )
