@@ -17,7 +17,16 @@
     = render @page.records
 
     br
-    - if @page.last?
-      | No more pages!
-    - else
-      = link_to 'Next page', next_page_path, options
+    - unless @page.first?
+      = link_to  previous_page_path, options do
+            button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+              i.material-icons chevron_left
+
+    button.mdl-button.mdl-js-button.mdl-button--mini disabled="true"
+      b = @page.number
+
+    - unless @page.last?
+      = link_to  next_page_path, options do
+            button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+              i.material-icons chevron_right
+br

@@ -5,6 +5,10 @@
         params[:question_id],
         page: @page.next_number
       ),
+      previous_page_path: question_answers_path(
+        params[:question_id],
+        page: @page.number - 1
+      ),
       options: { remote: true }
     )
 %>

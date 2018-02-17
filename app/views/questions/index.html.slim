@@ -8,4 +8,5 @@ br
 
 = render 'shared/paginated_records',
   next_page_path: questions_path(page: @page.next_number, q: params[:q]),
+  previous_page_path: questions_path(page: @page.number - 1, q: params[:q]),
   options: {}
