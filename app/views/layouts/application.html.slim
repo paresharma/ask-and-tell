@@ -27,3 +27,21 @@ html
       main.mdl-layout__content style="padding: 1rem"
         .page-content
           = yield
+          p#notice style="display:none" = notice
+          #notice-snackbar.mdl-js-snackbar.mdl-snackbar
+            .mdl-snackbar__text
+            button.mdl-snackbar__action type="button"
+
+    javascript:
+      document.addEventListener("turbolinks:load", function() {
+        'use strict';
+        var notice = document.querySelector('#notice')
+        if(notice.innerHTML) {
+          document.querySelector('#notice-snackbar')
+            .MaterialSnackbar
+              .showSnackbar({
+                message: notice.innerHTML
+              });
+          notice.innerHTML = ''
+        }
+      })

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     path = return_path
     set_return_path(nil)
-    redirect_to path
+    redirect_to path, notice: "Welcome #{user.name} !!!"
   end
 
   def destroy

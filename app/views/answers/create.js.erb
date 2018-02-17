@@ -1,11 +1,11 @@
 <% if @_ok %>
 
-  document.getElementById("answers").insertAdjacentHTML('afterbegin', "<%= j render(@answer) %>")
+  document.querySelector("#answers").insertAdjacentHTML('afterbegin', "<%= j render(@answer) %>")
 
-  document.getElementById("new_answer").innerHTML = "<%= j render('answers/form', answer: @answer.question.answers.build) %>"
+  document.querySelector("#new_answer").innerHTML = "<%= j render('answers/form', answer: @answer.question.answers.build) %>"
 
 <% else %>
 
-    document.getElementById("new_answer").innerHTML = "<%= j render('answers/form', answer: @answer) %>"
+  document.querySelector("#new_answer").innerHTML = "<%= j render('answers/form', answer: @answer) %>"
 
 <% end %>
