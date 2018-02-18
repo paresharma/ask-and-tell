@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Question < ApplicationRecord
   include Permissible
   include PgSearch
@@ -8,15 +10,15 @@ class Question < ApplicationRecord
   default_scope -> { includes(:user).order('id DESC') }
 
   pg_search_scope :search_by_title_or_description,
-    against: [:title, :description],
-    using: { tsearch: { dictionary: 'english' }}
-    # associated_against: { author: :title, comments: [:title, :description] },
-    # ignoring: :accents
+                  against: %i[title description],
+                  using: { tsearch: { dictionary: 'english' } }
+  # associated_against: { author: :title, comments: [:title, :description] },
+  # ignoring: :accents
 
   validates :title,
-    presence: true,
-    uniqueness: true,
-    length: { maximum: 200 }
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 200 }
 
   validates :description, presence: true
 

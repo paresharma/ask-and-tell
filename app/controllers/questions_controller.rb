@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
-  before_action :login_required, except: [:index, :show]
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :login_required, except: %i[index show]
+  before_action :set_question, only: %i[show edit update destroy]
 
   # GET /questions
   def index
@@ -8,8 +10,7 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1
-  def show
-  end
+  def show; end
 
   # GET /questions/new
   def new
@@ -17,8 +18,7 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /questions
   def create

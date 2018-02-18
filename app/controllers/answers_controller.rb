@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   before_action :login_required, except: [:index]
-  before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :set_answer, only: %i[edit update destroy]
 
   def index
     set_page_and_extract_portion_from(
@@ -9,15 +11,14 @@ class AnswersController < ApplicationController
     )
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
     @answer.question_id = params[:question_id]
 
-    @_ok =  @answer.save
+    @_ok = @answer.save
   end
 
   def update
