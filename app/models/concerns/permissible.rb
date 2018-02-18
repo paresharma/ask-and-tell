@@ -1,4 +1,4 @@
-module Permission
+module Permissible
   extend ActiveSupport::Concern
 
   def can_be_administered_by(user)

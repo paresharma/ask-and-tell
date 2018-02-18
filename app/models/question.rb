@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  include Permission
+  include Permissible
   include PgSearch
 
   belongs_to :user

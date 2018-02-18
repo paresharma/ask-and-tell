@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  include Permission
+  include Permissible
 
   belongs_to :question
   belongs_to :user
