@@ -1,0 +1,64 @@
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
+
+Metrics/AbcSize:
+  Max: 16
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'spec/**/*'
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'bin/**/*'
+    - 'config.ru'
+    - 'config/application.rb'
+    - 'config/boot.rb'
+    - 'config/initializers/*'
+    - 'config/puma.rb'
+    - 'config/spring.rb'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'spec/spec_helper.rb'
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/update'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'bin/yarn'
+
+Style/StderrPuts:
+  Exclude:
+    - 'bin/yarn'
+
+Style/StringLiterals:
+  Exclude:
+    - 'bin/spring'
+    - 'bin/yarn'
+    - 'config/application.rb'
+    - 'config/puma.rb'
+    - 'db/schema.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'Rakefile'
+    - 'config/application.rb'
+    - 'config/environments/*'
+    - 'db/**/*'
+    - 'spec/**/*'

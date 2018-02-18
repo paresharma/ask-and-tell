@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(request.env['omniauth.auth'])
     session[:user_id] = user.id
     path = return_path
-    set_return_path(nil)
+    store_return_path_in_session(nil)
     redirect_to path, notice: "Welcome #{user.name} !!!"
   end
 

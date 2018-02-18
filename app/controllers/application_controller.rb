@@ -7,12 +7,13 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    return unless session[:user_id]
+    @current_user ||= User.find(session[:user_id])
   end
 
   def login_required
     return if current_user
-    set_return_path(request.url) if request.get?
+    store_return_path_in_session(request.url) if request.get?
     redirect_to new_session_path, notice: 'Login to continue'
   end
 
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
     session[:return_path] || root_path
   end
 
-  def set_return_path(path)
+  def store_return_path_in_session(path)
     session[:return_path] = path
   end
 end

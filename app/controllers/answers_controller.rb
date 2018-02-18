@@ -22,9 +22,8 @@ class AnswersController < ApplicationController
   end
 
   def update
-    if @answer.update(answer_params)
-      redirect_to @answer.question, notice: 'Answer was successfully updated.'
-    end
+    @answer.update(answer_params) &&
+      redirect_to(@answer.question, notice: 'Answer was successfully updated.')
   end
 
   def destroy
