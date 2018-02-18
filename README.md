@@ -1,1 +1,2 @@
+[![Build Status](https://travis-ci.org/paresharma/ask-and-tell.svg?branch=master)](https://travis-ci.org/paresharma/ask-and-tell) [![Maintainability](https://api.codeclimate.com/v1/badges/49ad7eb7567d9eecd866/maintainability)](https://codeclimate.com/github/paresharma/ask-and-tell/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/49ad7eb7567d9eecd866/test_coverage)](https://codeclimate.com/github/paresharma/ask-and-tell/test_coverage)
 # Ask and tell
