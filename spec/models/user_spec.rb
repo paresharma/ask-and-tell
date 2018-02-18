@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -17,7 +19,7 @@ RSpec.describe User, type: :model do
           :credentials,
           token: new_user[:oauth_token],
           expires_at: new_user[:oauth_expires_at]
-        ),
+        )
       )
 
       expect { User.from_omniauth(auth) }.to change(User, :count).by(1)

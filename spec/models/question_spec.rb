@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
@@ -22,7 +24,7 @@ RSpec.describe Question, type: :model do
   context 'permission' do
     it 'can be administered only by the creator' do
       not_user = create(:user)
-      question =  create(:question)
+      question = create(:question)
 
       expect(question.can_be_administered_by(question.user)).to eq true
       expect(question.can_be_administered_by(not_user)).to eq false
